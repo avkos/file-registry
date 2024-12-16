@@ -13,7 +13,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var apiBaseURL = "http://localhost:8000"
+var apiBaseURL = "http://localhost:8000/v1"
 
 type uploadResp struct {
 	CID    string `json:"cid"`

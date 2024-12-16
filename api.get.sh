@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Variables
-API_URL="http://localhost:8000"
+API_URL="http://localhost:8000/v1"
 GET_ENDPOINT="$API_URL/files"
 
 # Example file path and content

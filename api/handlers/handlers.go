@@ -77,7 +77,7 @@ func (h *Handlers) GetFile(c *gin.Context) {
 func SetupRouter(contract Contract, ipfsClient IPFSClient) *gin.Engine {
 	h := &Handlers{Contract: contract, IPFSClient: ipfsClient}
 	router := gin.Default()
-	router.POST("/files", h.UploadFile)
-	router.GET("/files", h.GetFile)
+	router.POST("/v1/files", h.UploadFile)
+	router.GET("/v1/files", h.GetFile)
 	return router
 }

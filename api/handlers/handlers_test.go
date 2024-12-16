@@ -63,7 +63,7 @@ func TestUploadFile_Success(t *testing.T) {
 	body := []byte(`{"filePath":"/test/file.txt","file":"` + fileB64 + `"}`)
 
 	w := httptest.NewRecorder()
-	req, _ := http.NewRequest(http.MethodPost, "/files", bytes.NewBuffer(body))
+	req, _ := http.NewRequest(http.MethodPost, "/v1/files", bytes.NewBuffer(body))
 	req.Header.Set("Content-Type", "application/json")
 
 	router.ServeHTTP(w, req)
@@ -87,7 +87,7 @@ func TestUploadFile_InvalidBase64(t *testing.T) {
 
 	body := []byte(`{"filePath":"/test/file.txt","file":"!!!notbase64!!!"}`)
 	w := httptest.NewRecorder()
-	req, _ := http.NewRequest(http.MethodPost, "/files", bytes.NewBuffer(body))
+	req, _ := http.NewRequest(http.MethodPost, "/v1/files", bytes.NewBuffer(body))
 	req.Header.Set("Content-Type", "application/json")
 
 	router.ServeHTTP(w, req)
@@ -120,7 +120,7 @@ func TestUploadFile_ContractError(t *testing.T) {
 	body := []byte(`{"filePath":"/test/file.txt","file":"` + fileB64 + `"}`)
 
 	w := httptest.NewRecorder()
-	req, _ := http.NewRequest(http.MethodPost, "/files", bytes.NewBuffer(body))
+	req, _ := http.NewRequest(http.MethodPost, "/v1/files", bytes.NewBuffer(body))
 	req.Header.Set("Content-Type", "application/json")
 
 	router.ServeHTTP(w, req)
@@ -144,7 +144,7 @@ func TestUploadFile_MissingFilePath(t *testing.T) {
 	body := []byte(`{"file":"` + fileB64 + `"}`)
 
 	w := httptest.NewRecorder()
-	req, _ := http.NewRequest(http.MethodPost, "/files", bytes.NewBuffer(body))
+	req, _ := http.NewRequest(http.MethodPost, "/v1/files", bytes.NewBuffer(body))
 	req.Header.Set("Content-Type", "application/json")
 
 	router.ServeHTTP(w, req)
@@ -169,7 +169,7 @@ func TestGetFile_Success(t *testing.T) {
 	router := handlers.SetupRouter(mockC, mockIPFS)
 
 	w := httptest.NewRecorder()
-	req, _ := http.NewRequest(http.MethodGet, "/files?filePath=/test/file.txt", nil)
+	req, _ := http.NewRequest(http.MethodGet, "/v1/files?filePath=/test/file.txt", nil)
 	router.ServeHTTP(w, req)
 
 	assert.Equal(t, http.StatusOK, w.Code)
@@ -188,7 +188,7 @@ func TestGetFile_MissingFilePath(t *testing.T) {
 	router := handlers.SetupRouter(mockC, mockIPFS)
 
 	w := httptest.NewRecorder()
-	req, _ := http.NewRequest(http.MethodGet, "/files", nil)
+	req, _ := http.NewRequest(http.MethodGet, "/v1/files", nil)
 	fmt.Println(req)
 	router.ServeHTTP(w, req)
 
@@ -212,7 +212,7 @@ func TestGetFile_ContractError(t *testing.T) {
 	router := handlers.SetupRouter(mockC, mockIPFS)
 
 	w := httptest.NewRecorder()
-	req, _ := http.NewRequest(http.MethodGet, "/files?filePath=/test/file.txt", nil)
+	req, _ := http.NewRequest(http.MethodGet, "/v1/files?filePath=/test/file.txt", nil)
 	router.ServeHTTP(w, req)
 
 	assert.Equal(t, http.StatusInternalServerError, w.Code)

@@ -1,19 +1,18 @@
 version: "3.9"
 services:
   hardhat:
-    image: node:20-alpine
-    working_dir: /app
-    volumes:
-      - ./hardhat:/app
+    build: ./hardhat
+    ports:
+      - "8545:8545"
     command: >
-      sh -c "npx hardhat node & 
+      sh -c "yarn start-node & 
       sleep 5 && 
       yarn compile &&
       yarn test &&
       yarn deploy --network localhost && 
       tail -f /dev/null"
-    ports:
-      - "8545:8545"
+    volumes:
+      - ./hardhat:/app
 
   ipfs:
     image: ipfs/kubo:latest

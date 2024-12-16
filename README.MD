@@ -67,6 +67,7 @@ Follow these steps to set up the project locally.
 Execute the following command from the project's root directory:
 
 ```bash
+  docker compose build
   docker compose up
 ```
 ![Docker compose](assets/composer.gif)

@@ -4,6 +4,9 @@
 ![Go](https://img.shields.io/badge/go-1.23-blue.svg)
 ![Test](https://img.shields.io/badge/tests-passing-brightgreen.svg)
 
+> **WARNING:** This is an example application. It is recommended to add authentication to the API and implement the `Ownable` pattern in the smart contract to protect against unauthorized overwriting by different users. These enhancements should be tailored based on specific business requirements.
+
+
 ## Table of Contents
 
 - [Overview](#overview)

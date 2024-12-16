@@ -7,5 +7,5 @@ GET_ENDPOINT="$API_URL/files"
 # Example file path and content
 FILE_PATH="./test.txt"
 
-echo "Uploading file..."
+echo "Getting file CID..."
 curl "$GET_ENDPOINT?filePath=$FILE_PATH"

@@ -71,54 +71,28 @@ Execute the following command from the project's root directory:
   docker compose up
 ```
 ![Docker compose](assets/composer.gif)
-It will install hardhat, ipfs and api dependencies and start the services. Also compile, test and deploy the contract
-
+It will install the required dependencies for Hardhat, IPFS, and the API, set up the services, and seamlessly compile, test, and deploy the contract.
 
 ### Option 2: Manual Setup
-**Initialize Go Modules**
 
-   ```bash
-   cd api
-   go mod tidy
-   ```
-
-
-
-## Running the Application
-
-You can run the application directly using Go or use Docker to manage dependencies.
-
-**Expected Output:**
-
-    - The Ethereum node (`hardhat`) and IPFS node (`ipfs`) will start and map their respective ports.
-    - The API service will build and start.
-    - Logs will indicate successful loading of configurations and the API server running on the specified port.
-
-
-### Option 1: Running Directly with Go
 **Ensure Dependencies Are Running**
+```bash
+   # Start the Ethereum node using hardhat
+   cd hardhat
+   npm i
+   npm run start-node
+```
 
-    - **Ethereum Node:** If you're using a local Ethereum node like Hardhat, ensure it's running.
-
-      ```bash
-      # Example with Hardhat
-      cd hardhat
-      npm i
-      npm run start-node
-      
-      # in separate console compile and deploy the contract
-      npm run compile
-      npm run deploy
-      ```
-
-    - **IPFS Node:** Ensure your IPFS daemon is running.
-
-      ```bash
-      ipfs daemon
-      ```
+```bash
+   # compile and deploy the contract
+   npm run compile
+   npm run deploy
+```
+```bash
+   # Ensure your IPFS daemon is running.
+   ipfs daemon
+```
 **Run the Application**
-
-   Execute the following command from the project's root directory:
 
 ```bash
    cd api
@@ -160,8 +134,7 @@ For manual testing and interaction with the API, the project provides the follow
     ./api.upload.sh #Upload Data via API
     ./api.get.sh #Retrieve Data via API
 ```
-![API Upload](assets/upload.gif)
-![API Get](assets/get.gif)
+![API Upload](assets/api.gif)
 
 ## License
 
